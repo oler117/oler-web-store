@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <title>WebStore | Home</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="public/css/lib/bootstrap.min.css">
+    <link rel="stylesheet" href="public/css/lib/bootstrap-theme.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="public/js/lib/bootstrap.min.js"></script>
+    <script src="public/js/lib/angular.js"></script>
+    <script src="public/js/lib/angular-ui-router.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="public/css/custom/home.css">
+
+    <!-- Custom JS -->
+    <script src="public/app/app.js"></script>
+    <script src="public/app/views/login/loginCtrl.js"></script>
+    <script src="public/app/views/products/productsCtrl.js"></script>
+    <script src="public/app/views/nav/navigationCtrl.js"></script>
+    <script src="public/app/routing.js"></script>
+</head>
+<body ng-cloak>
+<header>
+    <nav class="navbar navbar-default" ng-controller="navigationCtrl">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">WebSiteName</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Category 1</a></li>
+                <li><a href="#">Category 2</a></li>
+                <li><a href="#">Category 3</a></li>
+                <li><a href="#">Contacts</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li ng-show="!authenticated">
+                    <a role="button" data-toggle="collapse"
+                       href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        <span class="glyphicon glyphicon-log-in"></span>
+                        Login</a>
+                </li>
+                <li ng-show="authenticated">
+                    <a role="button" ng-click="logout()">
+                        <span class="glyphicon glyphicon-log-out"></span>
+                        Log out</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<div>
+    <ng-include src="'public/app/views/login/login.html'" ng-controller="loginCtrl as loginCtrl"></ng-include>
+</div>
+
+<ui-view></ui-view>
+
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">Place sticky footer content here.</p>
+    </div>
+</footer>
+</body>
+</html>

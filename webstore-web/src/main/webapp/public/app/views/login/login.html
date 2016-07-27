@@ -1,0 +1,31 @@
+<div class="collapse login-container" id="collapseExample">
+    <div class="panel panel-default">
+        <div class="panel-heading">Sing In</div>
+        <div class="panel-body">
+            <form role="form" class="form-horizontal" ng-submit="loginCtrl.login()">
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="username">Username</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="username" name="username"
+                               ng-model="loginCtrl.credentials.username">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="password">Password</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="password" name="password"
+                               ng-model="loginCtrl.credentials.password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-9">
+                        <button type="submit" role="button" style="width: 100%;" class="btn btn-primary">Login</button>
+                    </div>
+                </div>
+            </form>
+            <div class="alert alert-danger" ng-show="loginCtrl.error">
+                There was a problem logging in. Please try again.
+            </div>
+        </div>
+    </div>
+</div>
