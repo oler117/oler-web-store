@@ -15,11 +15,11 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
         registry.addResourceHandler("/static/**").addResourceLocations("/static/");
+        registry.addResourceHandler("/public/**").addResourceLocations("/public/");
     }
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("forward:public/app/index.html");
-        registry.addViewController("/login").setViewName("forward:public/app/views/login/login.html");
+        registry.addViewController("/").setViewName("forward:app/index.html");
     }
 }

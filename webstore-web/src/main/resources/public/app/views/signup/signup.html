@@ -1,0 +1,82 @@
+<div class="container signup-container">
+    <div class="panel panel-default" ng-show="!success">
+        <div class="panel-heading">Sing Up</div>
+        <div class="panel-body">
+            <form role="form" class="form-horizontal" ng-submit="signUp()" name="signupForm" novalidate>
+                <div class="form-group required"
+                     ng-class="{ 'has-error': signupForm.email.$touched && signupForm.email.$invalid }">
+                    <i class="fa fa-asterisk text-danger"></i>
+                    <input type="email" class="form-control" id="email" name="email"
+                           ng-model="newUser.email" placeholder="Enter email" required="required"
+                           ng-required ng-pattern="emailFormat">
+                    <div class="help-block" ng-messages="signupForm.email.$error" ng-if="signupForm.email.$touched">
+                        <div ng-messages-include="app/views/signup/form_messages.html"></div>
+                    </div>
+                </div>
+                <div class="form-group required"
+                     ng-class="{ 'has-error': signupForm.psw_1.$touched && signupForm.psw_1.$invalid }">
+                    <i class="fa fa-asterisk text-danger"></i>
+                    <input type="password" class="form-control" id="psw_1" name="psw_1"
+                           ng-model="newUser.password" placeholder="Choose your password" required="required"
+                           ng-required ng-minlength="6" ng-maxlength="50">
+                    <div class="help-block" ng-messages="signupForm.psw_1.$error" ng-if="signupForm.psw_1.$touched">
+                        <div ng-messages-include="app/views/signup/form_messages.html"></div>
+                    </div>
+                </div>
+                <div class="form-group required"
+                     ng-class="{ 'has-error': signupForm.psw_2.$touched && signupForm.psw_2.$invalid }">
+                    <i class="fa fa-asterisk text-danger"></i>
+                    <input type="password" class="form-control" id="psw_2" name="psw_2"
+                           ng-model="retypedPassword" placeholder="Reenter password" required="required"
+                           ng-required pw-check="psw_1">
+                    <div class="help-block" ng-messages="signupForm.psw_2.$error" ng-if="signupForm.psw_2.$touched">
+                        <div ng-messages-include="app/views/signup/form_messages.html"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="firstName" name="firstName"
+                           ng-model="newUser.firstName" placeholder="First name">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="lastName" name="lastName"
+                           ng-model="newUser.lastName" placeholder="Last name">
+                </div>
+                <div class="form-group required"
+                     ng-class="{ 'has-error': signupForm.country.$touched && signupForm.country.$invalid }">
+                    <i class="fa fa-asterisk text-danger"></i>
+                    <select ng-model="newUser.countryId" class="form-control" id="country" name="country"
+                            required="required" ng-required>
+                        <option style="display:none" value="" disabled>---Please select---</option>
+                        <option ng-repeat="country in availableCountries" value="{{country.id}}">
+                            {{country.name}}
+                        </option>
+                    </select>
+                    <div class="help-block" ng-messages="signupForm.country.$error" ng-if="signupForm.country.$touched">
+                        <div ng-messages-include="app/views/signup/form_messages.html"></div>
+                    </div>
+                </div>
+                <div class="alert alert-danger" ng-show="showError">
+                    {{errorMsg}}
+                </div>
+                <div role="button" class="form-group">
+                    <button type="submit" role="button" class="btn btn-success" ng-disabled="signupForm.$invalid">Sign
+                        Up!
+                    </button>
+                </div>
+                <div role="button" class="form-group">
+                    <a class="btn btn-block btn-social btn-facebook">
+                        <span class="fa fa-facebook"></span>
+                        Sign in with Facebook
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Email confirmation message -->
+    <div ng-show="success">
+        Confirmation email was sent to {{newUser.email}}.
+        Please, check your email to finish your registration
+    </div>
+
+</div>

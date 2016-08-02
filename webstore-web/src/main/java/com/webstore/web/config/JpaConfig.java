@@ -2,6 +2,7 @@ package com.webstore.web.config;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import org.hibernate.cfg.Environment;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -39,6 +40,10 @@ public class JpaConfig implements TransactionManagementConfigurer {
     private String hibernateDialect;
     @Value("${hibernate.hbm2ddl.auto}")
     private String hibernateHbm2ddlAuto;
+    @Value("${hibernate.show_sql}")
+    private String hibernateShowSql;
+    @Value("${hibernate.format_sql}")
+    private String hibernateFormatSql;
 
     @Bean
     public DataSource configureDataSource() {
@@ -58,14 +63,16 @@ public class JpaConfig implements TransactionManagementConfigurer {
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 
         Properties jpaProperties = new Properties();
-        jpaProperties.put(org.hibernate.cfg.Environment.DIALECT, hibernateDialect);
-        jpaProperties.put(org.hibernate.cfg.Environment.HBM2DDL_AUTO, hibernateHbm2ddlAuto);
+        jpaProperties.put(Environment.DIALECT, hibernateDialect);
+        jpaProperties.put(Environment.HBM2DDL_AUTO, hibernateHbm2ddlAuto);
+        jpaProperties.put(Environment.SHOW_SQL, hibernateShowSql);
+        jpaProperties.put(Environment.FORMAT_SQL, hibernateFormatSql);
         entityManagerFactoryBean.setJpaProperties(jpaProperties);
 
         return entityManagerFactoryBean;
     }
 
-    @Bean
+    @Bean(name = "transactionManager")
     @Override
     public PlatformTransactionManager annotationDrivenTransactionManager() {
         return new JpaTransactionManager();

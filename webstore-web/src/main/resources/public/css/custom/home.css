@@ -1,0 +1,65 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    padding-top: 65px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    padding: 20px 0;
+    background-color: #f5f5f5;
+}
+
+.login-container {
+    position: absolute;
+    right: 0px;
+    margin: 0 15px;
+    height: auto;
+    width: 300px;
+    z-index: 1;
+}
+
+.navbar-collapse .dropdown {
+    display: flex;
+}
+
+a[role='menuitem-dropdown-arrow'] {
+    background: #f3f3f3;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+a[role='menuitem'] {
+    padding-right: 0px;
+}
+
+.signup-container {
+    padding: 50px 400px;
+}
+
+.signup-container > .panel > .panel-heading {
+    text-align: center;
+}
+
+.signup-container > .panel > .panel-body {
+    padding: 20px 50px;
+}
+
+.signup-container button {
+    width: 100%;
+}
+
+.btn-facebook {
+    text-align: center;
+}
+
+.form-group.required .form-control:before {
+    content: "*";
+    color: red;
+}

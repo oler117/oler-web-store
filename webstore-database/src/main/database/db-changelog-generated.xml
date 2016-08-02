@@ -1,0 +1,277 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="liquibase" id="1470142687933-1" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createSequence sequenceName="country_c_id_seq"/>
+    </changeSet>
+    <changeSet author="liquibase" id="1470142687933-2" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createSequence sequenceName="hibernate_sequence"/>
+    </changeSet>
+    <changeSet author="liquibase" id="1470142687933-3" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createSequence sequenceName="property_p_id_seq"/>
+    </changeSet>
+    <changeSet author="liquibase" id="1470142687933-4" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createSequence sequenceName="role_r_id_seq"/>
+    </changeSet>
+    <changeSet author="liquibase" id="1470142687933-5" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createSequence sequenceName="user_profile_up_id_seq"/>
+    </changeSet>
+    <changeSet author="liquibase" id="1470142687933-6" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createSequence sequenceName="user_temp_token_utt_id_seq"/>
+    </changeSet>
+    <changeSet author="liquibase" id="1470142687933-7" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createSequence sequenceName="user_u_id_seq"/>
+    </changeSet>
+    <changeSet author="liquibase" id="1470142687933-8" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="country">
+            <column autoIncrement="true" name="c_id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="country_pkey"/>
+            </column>
+            <column name="c_iso_code" type="VARCHAR(2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="c_name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="liquibase" id="1470142687933-9" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="property">
+            <column autoIncrement="true" name="p_id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="property_pkey"/>
+            </column>
+            <column name="p_key" type="VARCHAR(255)"/>
+            <column name="p_value" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="liquibase" id="1470142687933-10" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="role">
+            <column autoIncrement="true" name="r_id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="role_pkey"/>
+            </column>
+            <column name="r_rolename" type="VARCHAR(100)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="liquibase" id="1470142687933-11" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="user">
+            <column autoIncrement="true" name="u_id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="user_pkey"/>
+            </column>
+            <column name="u_username" type="VARCHAR(50)"/>
+            <column name="u_password" type="VARCHAR(255)"/>
+            <column name="u_is_active" type="BOOL"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="liquibase" id="1470142687933-12" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="user_2_role">
+            <column name="u_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="r_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="liquibase" id="1470142687933-13" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="user_2_user_profile">
+            <column name="u2up_u_id" type="INT"/>
+            <column name="u2up_up_id" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="liquibase" id="1470142687933-14" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="user_profile">
+            <column autoIncrement="true" name="up_id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="user_profile_pkey"/>
+            </column>
+            <column name="up_country_id" type="INT"/>
+            <column name="up_first_name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="up_last_name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="up_city" type="VARCHAR(50)"/>
+            <column name="up_birth_date" type="date"/>
+            <column name="country_c_id" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="liquibase" id="1470142687933-15" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="user_temp_token">
+            <column autoIncrement="true" name="utt_id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="user_temp_token_pkey"/>
+            </column>
+            <column name="utt_token" type="VARCHAR(255)"/>
+            <column name="utt_token_type" type="VARCHAR(255)"/>
+            <column name="utt_user_id" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="liquibase" id="1470142687933-16" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert tableName="country">
+            <column name="c_id" valueNumeric="1"/>
+            <column name="c_iso_code" value="GB"/>
+            <column name="c_name" value="United Kingdom"/>
+        </insert>
+        <insert tableName="country">
+            <column name="c_id" valueNumeric="2"/>
+            <column name="c_iso_code" value="UA"/>
+            <column name="c_name" value="Ukraine"/>
+        </insert>
+    </changeSet>
+    <changeSet author="liquibase" id="1470142687933-17" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert tableName="role">
+            <column name="r_id" valueNumeric="1"/>
+            <column name="r_rolename" value="ROLE_GUEST"/>
+        </insert>
+        <insert tableName="role">
+            <column name="r_id" valueNumeric="2"/>
+            <column name="r_rolename" value="ROLE_USER"/>
+        </insert>
+        <insert tableName="role">
+            <column name="r_id" valueNumeric="3"/>
+            <column name="r_rolename" value="ROLE_ADMIN"/>
+        </insert>
+    </changeSet>
+    <changeSet author="liquibase" id="1470142687933-18" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert tableName="user">
+            <column name="u_id" valueNumeric="14"/>
+            <column name="u_username" value="guest"/>
+            <column name="u_password" value="$2a$08$MVw.jytALX1UciMx1drade.Fi5Vef/eKYkJavNjpaK9tNriX5jI9K"/>
+            <column name="u_is_active"/>
+        </insert>
+        <insert tableName="user">
+            <column name="u_id" valueNumeric="15"/>
+            <column name="u_username" value="user"/>
+            <column name="u_password" value="$2a$08$MVw.jytALX1UciMx1drade.Fi5Vef/eKYkJavNjpaK9tNriX5jI9K"/>
+            <column name="u_is_active"/>
+        </insert>
+        <insert tableName="user">
+            <column name="u_id" valueNumeric="16"/>
+            <column name="u_username" value="admin"/>
+            <column name="u_password" value="$2a$08$MVw.jytALX1UciMx1drade.Fi5Vef/eKYkJavNjpaK9tNriX5jI9K"/>
+            <column name="u_is_active"/>
+        </insert>
+        <insert tableName="user">
+            <column name="u_id" valueNumeric="17"/>
+            <column name="u_username" value="admin2"/>
+            <column name="u_password" value="$2a$08$MVw.jytALX1UciMx1drade.Fi5Vef/eKYkJavNjpaK9tNriX5jI9K"/>
+            <column name="u_is_active"/>
+        </insert>
+    </changeSet>
+    <changeSet author="liquibase" id="1470142687933-19" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert tableName="user_2_role">
+            <column name="u_id" valueNumeric="14"/>
+            <column name="r_id" valueNumeric="1"/>
+        </insert>
+        <insert tableName="user_2_role">
+            <column name="u_id" valueNumeric="15"/>
+            <column name="r_id" valueNumeric="2"/>
+        </insert>
+        <insert tableName="user_2_role">
+            <column name="u_id" valueNumeric="16"/>
+            <column name="r_id" valueNumeric="3"/>
+        </insert>
+        <insert tableName="user_2_role">
+            <column name="u_id" valueNumeric="17"/>
+            <column name="r_id" valueNumeric="2"/>
+        </insert>
+        <insert tableName="user_2_role">
+            <column name="u_id" valueNumeric="17"/>
+            <column name="r_id" valueNumeric="3"/>
+        </insert>
+    </changeSet>
+    <changeSet author="liquibase" id="1470142687933-20" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <insert tableName="user_profile">
+            <column name="up_id" valueNumeric="5"/>
+            <column name="up_country_id" valueNumeric="1"/>
+            <column name="up_first_name" value="FirstName1"/>
+            <column name="up_last_name" value="LastName1"/>
+            <column name="up_city" value="London"/>
+            <column name="up_birth_date" valueDate="1990-01-01"/>
+            <column name="country_c_id"/>
+        </insert>
+        <insert tableName="user_profile">
+            <column name="up_id" valueNumeric="6"/>
+            <column name="up_country_id" valueNumeric="1"/>
+            <column name="up_first_name" value="FirstName2"/>
+            <column name="up_last_name" value="LastName2"/>
+            <column name="up_city" value="Edinburgh"/>
+            <column name="up_birth_date" valueDate="1990-01-01"/>
+            <column name="country_c_id"/>
+        </insert>
+        <insert tableName="user_profile">
+            <column name="up_id" valueNumeric="7"/>
+            <column name="up_country_id" valueNumeric="2"/>
+            <column name="up_first_name" value=""/>
+            <column name="up_last_name" value=""/>
+            <column name="up_city" value="Kiev"/>
+            <column name="up_birth_date" valueDate="1990-01-01"/>
+            <column name="country_c_id"/>
+        </insert>
+        <insert tableName="user_profile">
+            <column name="up_id" valueNumeric="8"/>
+            <column name="up_country_id" valueNumeric="2"/>
+            <column name="up_first_name" value="FirstName4"/>
+            <column name="up_last_name" value="LastName4"/>
+            <column name="up_city" value="Kiev"/>
+            <column name="up_birth_date" valueDate="1990-01-01"/>
+            <column name="country_c_id"/>
+        </insert>
+    </changeSet>
+    <changeSet author="liquibase" id="1470142687933-21" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="role_r_rolename_key" tableName="role" unique="true">
+            <column name="r_rolename"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="liquibase" id="1470142687933-22" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="user_2_user_profile_u2up_u_id_key" tableName="user_2_user_profile" unique="true">
+            <column name="u2up_u_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="liquibase" id="1470142687933-23" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="user_2_user_profile_u2up_up_id_key" tableName="user_2_user_profile" unique="true">
+            <column name="u2up_up_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="liquibase" id="1470142687933-24" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex indexName="user_u_username_key" tableName="user" unique="true">
+            <column name="u_username"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="liquibase" id="1470142687933-25" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="u_id" baseTableName="user_2_role"
+                                 constraintName="fk3xqcjnavle92ne70qcise1pft" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="u_id" referencedTableName="user"/>
+    </changeSet>
+    <changeSet author="liquibase" id="1470142687933-26" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="country_c_id" baseTableName="user_profile"
+                                 constraintName="fk_2criu2a6fmf9680p76vi5f0fq" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="c_id" referencedTableName="country"/>
+    </changeSet>
+    <changeSet author="liquibase" id="1470142687933-27" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="r_id" baseTableName="user_2_role"
+                                 constraintName="fkgomxtufrqyk3849mv88emess6" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="r_id" referencedTableName="role"/>
+    </changeSet>
+    <changeSet author="liquibase" id="1470142687933-28" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="u2up_u_id" baseTableName="user_2_user_profile"
+                                 constraintName="user_2_user_profile_u2up_u_id_fkey" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="u_id" referencedTableName="user"/>
+    </changeSet>
+    <changeSet author="liquibase" id="1470142687933-29" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="u2up_up_id" baseTableName="user_2_user_profile"
+                                 constraintName="user_2_user_profile_u2up_up_id_fkey" deferrable="false"
+                                 initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION"
+                                 referencedColumnNames="up_id" referencedTableName="user_profile"/>
+    </changeSet>
+    <changeSet author="liquibase" id="1470142687933-30" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="up_country_id" baseTableName="user_profile"
+                                 constraintName="user_profile_up_country_id_fkey" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="c_id" referencedTableName="country"/>
+    </changeSet>
+</databaseChangeLog>

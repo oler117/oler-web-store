@@ -51,12 +51,17 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-social-facebook</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
+            <version>9.4.1208.jre7</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
@@ -80,6 +85,31 @@
             <artifactId>webstore-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.10</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Joda Time -->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.9.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jadira.usertype</groupId>
+            <artifactId>usertype.core</artifactId>
+            <version>3.1.0.CR1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>15.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -89,44 +119,46 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <fork>true</fork>
+                    <addResources>true</addResources>
+                    <!--<addResources>/webapp/**</addResources>-->
                 </configuration>
             </plugin>
-            <plugin>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>2.6</version>
-                <executions>
-                    <execution>
-                        <id>copy-resources</id>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${basedir}/target/classes/static/</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>src/main/webapp</directory>
-                                    <filtering>true</filtering>
-                                    <excludes>
-                                        <exclude>**/*.woff</exclude>
-                                        <exclude>**/*.woff2</exclude>
-                                        <exclude>**/*.ttf</exclude>
-                                    </excludes>
-                                </resource>
-                                <resource>
-                                    <directory>src/main/webapp</directory>
-                                    <filtering>false</filtering>
-                                    <includes>
-                                        <include>**/*.woff</include>
-                                        <include>**/*.woff2</include>
-                                        <include>**/*.ttf</include>
-                                    </includes>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+            <!--<plugin>-->
+            <!--<artifactId>maven-resources-plugin</artifactId>-->
+            <!--<version>2.6</version>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<id>copy-resources</id>-->
+            <!--<phase>validate</phase>-->
+            <!--<goals>-->
+            <!--<goal>copy-resources</goal>-->
+            <!--</goals>-->
+            <!--<configuration>-->
+            <!--<outputDirectory>${basedir}/target/classes/static/</outputDirectory>-->
+            <!--<resources>-->
+            <!--<resource>-->
+            <!--<directory>src/main/webapp</directory>-->
+            <!--<filtering>true</filtering>-->
+            <!--<excludes>-->
+            <!--<exclude>**/*.woff</exclude>-->
+            <!--<exclude>**/*.woff2</exclude>-->
+            <!--<exclude>**/*.ttf</exclude>-->
+            <!--</excludes>-->
+            <!--</resource>-->
+            <!--<resource>-->
+            <!--<directory>src/main/webapp</directory>-->
+            <!--<filtering>false</filtering>-->
+            <!--<includes>-->
+            <!--<include>**/*.woff</include>-->
+            <!--<include>**/*.woff2</include>-->
+            <!--<include>**/*.ttf</include>-->
+            <!--</includes>-->
+            <!--</resource>-->
+            <!--</resources>-->
+            <!--</configuration>-->
+            <!--</execution>-->
+            <!--</executions>-->
+            <!--</plugin>-->
         </plugins>
     </build>
 

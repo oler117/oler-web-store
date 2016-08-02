@@ -10,15 +10,15 @@ import javax.persistence.*;
  */
 @Entity
 @Table(schema = "test_db_data", name = "role")
-@SequenceGenerator(schema = "test_db_data", name = "role_r_id_seq")
 @Data
 @NoArgsConstructor(force = true)
 public class Role {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "role_r_id_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "r_id")
     private Integer id;
     @Column(name = "r_rolename")
-    private String roleName;
+    private String name;
+
 }

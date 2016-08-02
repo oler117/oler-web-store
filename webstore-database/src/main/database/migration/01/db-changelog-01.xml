@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.2.xsd">
+
+    <!--<include file="src/main/migration/01/001_XXXX.sql"/>-->
+    <include file="src/main/database/migration/01/001_add_auth_roles.sql"/>
+    <include file="src/main/database/migration/01/002_add_countries.sql"/>
+    <include file="src/main/database/migration/01/003_add_email_confirm_properties.sql"/>
+    <include file="src/main/database/migration/01/004_add_users_and_user_profiles_TEST.sql"/>
+
+</databaseChangeLog>

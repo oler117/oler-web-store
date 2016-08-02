@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.2.xsd">
+
+    <!--<include file="src/main/migration/01/001_XXXX.sql"/>-->
+    <!--<include file="src/main/database/schema/01/000_create_schema.sql"/>-->
+    <include file="src/main/database/schema/01/001_create_country_table.sql"/>
+    <include file="src/main/database/schema/01/002_create_property_table.sql"/>
+    <include file="src/main/database/schema/01/003_create_auth_tables.sql"/>
+    <include file="src/main/database/schema/01/004_create_user_profile_tables.sql"/>
+
+</databaseChangeLog>

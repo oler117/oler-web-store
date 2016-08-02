@@ -1,0 +1,16 @@
+driver: org.postgresql.Driver
+url: jdbc:postgresql://localhost:5432/test_db
+username: postgres
+password: postgres
+changelogSchemaName: test_db_data
+defaultSchemaName: test_db_data
+changeLogFile: src/main/database/db-changelog-master.xml
+#diffTypes: data
+verbose: true
+logging: debug
+
+referenceDefaultSchemaName: test_db_data
+referenceDriver: org.postgresql.Driver
+referenceUrl: jdbc:postgresql://localhost:5432/test_db
+referenceUsername: postgres
+referencePassword: postgres

@@ -6,8 +6,16 @@ dataSource:
 hibernate:
   dialect: org.hibernate.dialect.PostgreSQLDialect
   hbm2ddl.auto: update
+  show_sql: true
+  format_sql: true
 
-spring.data:
-  mongodb.host: localhost
-  mongodb.port: 27017
-  mongodb.database: test_db
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: test_db
+    social:
+      facebook:
+        appId:
+        appSecret:
