@@ -1,0 +1,21 @@
+dataSource:
+  driverClassName: org.postgresql.Driver
+  url: jdbc:postgresql://ec2-54-163-245-32.compute-1.amazonaws.com:5432/d7oar4ddplmm6a
+  username: dhoqqhkwmukemi
+  password: GzbNqjdyKZBrc3EAvmJkMi_zab
+hibernate:
+  dialect: org.hibernate.dialect.PostgreSQLDialect
+  hbm2ddl.auto: update
+  show_sql: true
+  format_sql: true
+
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: test_db
+    social:
+      facebook:
+        appId:
+        appSecret:

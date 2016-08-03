@@ -4,10 +4,12 @@
 
 # IntelliJ project files
 .idea
+/.idea/
 *.iml
 out
 gen
 *.jar
 *.war
 *.ear
-/target/
+**/target/
+**/*.iml
