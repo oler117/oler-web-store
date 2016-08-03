@@ -5,7 +5,6 @@ password: postgres
 changelogSchemaName: test_db_data
 defaultSchemaName: test_db_data
 changeLogFile: src/main/database/db-changelog-master.xml
-#diffTypes: data
 verbose: true
 logging: debug
 

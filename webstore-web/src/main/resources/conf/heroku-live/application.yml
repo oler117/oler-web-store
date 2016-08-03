@@ -1,6 +1,6 @@
 dataSource:
   driverClassName: org.postgresql.Driver
-  url: jdbc:postgresql://ec2-54-163-245-32.compute-1.amazonaws.com:5432/d7oar4ddplmm6a
+  url: jdbc:postgresql://ec2-54-163-245-32.compute-1.amazonaws.com:5432/d7oar4ddplmm6a?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
   username: dhoqqhkwmukemi
   password: GzbNqjdyKZBrc3EAvmJkMi_zab
 hibernate:
