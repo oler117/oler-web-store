@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -war webstore-web/target/webstore-web-0.0.1-SNAPSHOT.war
+web: java $JAVA_OPTS -jar webstore-web/target/webstore-web-0.0.1-SNAPSHOT.jar --port $PORT
