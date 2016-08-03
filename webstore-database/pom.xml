@@ -31,6 +31,81 @@
         </dependency>
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <build.profile.id>local</build.profile.id>
+            </properties>
+        </profile>
+        <profile>
+            <id>heroku-live</id>
+            <properties>
+                <build.profile.id>heroku-live</build.profile.id>
+            </properties>
+            <!--<build>-->
+            <!--<plugins>-->
+            <!--<plugin>-->
+            <!--<groupId>org.apache.maven.plugins</groupId>-->
+            <!--<artifactId>maven-antrun-plugin</artifactId>-->
+            <!--<version>1.7</version>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<phase>process-resources</phase>-->
+            <!--<goals>-->
+            <!--<goal>run</goal>-->
+            <!--</goals>-->
+            <!--<configuration>-->
+            <!--<tasks>-->
+            <!--<copy file="src/main/resources/conf/${build.profile.id}/liquibase/liquibase.yml"-->
+            <!--tofile="${project.build.outputDirectory}/liquibase.yml"></copy>-->
+            <!--<delete dir="${project.build.outputDirectory}/conf" includeemptydirs="true"/>-->
+            <!--</tasks>-->
+            <!--</configuration>-->
+            <!--</execution>-->
+            <!--</executions>-->
+            <!--</plugin>-->
+            <!--<plugin>-->
+            <!--<groupId>org.liquibase</groupId>-->
+            <!--<artifactId>liquibase-maven-plugin</artifactId>-->
+            <!--<version>${liquibaseVersion}</version>-->
+            <!--<configuration>-->
+            <!--&lt;!&ndash;<propertyFile>src/main/resources/liquibase/liquibase.yml</propertyFile>&ndash;&gt;-->
+            <!--<propertyFile>${project.build.outputDirectory}/liquibase.yml</propertyFile>-->
+            <!--<changeSetAuthor>liquibase</changeSetAuthor>-->
+            <!--<outputChangeLogFile>-->
+            <!--${project.build.directory}/db-changelog-generated-${databaseVersion}-${maven.build.timestamp}.xml-->
+            <!--</outputChangeLogFile>-->
+            <!--<outputFileEncoding>UTF-8</outputFileEncoding>-->
+            <!--<diffTypes>tables,columns,views,primaryKeys,foreignKeys,indexes,sequences,data-->
+            <!--</diffTypes>-->
+            <!--<tag>changeset-${databaseVersion}-${maven.build.timestamp}</tag>-->
+            <!--</configuration>-->
+            <!--<dependencies>-->
+            <!--<dependency>-->
+            <!--<groupId>org.postgresql</groupId>-->
+            <!--<artifactId>postgresql</artifactId>-->
+            <!--<version>9.4.1208.jre7</version>-->
+            <!--</dependency>-->
+            <!--</dependencies>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<phase>process-resources</phase>-->
+            <!--<goals>-->
+            <!--<goal>update</goal>-->
+            <!--<goal>tag</goal>-->
+            <!--</goals>-->
+            <!--</execution>-->
+            <!--</executions>-->
+            <!--</plugin>-->
+            <!--</plugins>-->
+            <!--</build>-->
+        </profile>
+    </profiles>
+
     <build>
         <plugins>
             <plugin>
@@ -38,7 +113,7 @@
                 <artifactId>liquibase-maven-plugin</artifactId>
                 <version>${liquibaseVersion}</version>
                 <configuration>
-                    <propertyFile>src/main/resources/liquibase/liquibase.yml</propertyFile>
+                    <propertyFile>${project.build.outputDirectory}/liquibase.yml</propertyFile>
                     <changeSetAuthor>liquibase</changeSetAuthor>
                     <outputChangeLogFile>
                         ${project.build.directory}/db-changelog-generated-${databaseVersion}-${maven.build.timestamp}.xml
@@ -54,15 +129,6 @@
                         <version>9.4.1208.jre7</version>
                     </dependency>
                 </dependencies>
-                <!--<executions>-->
-                <!--<execution>-->
-                <!--<phase>process-resources</phase>-->
-                <!--<goals>-->
-                <!--<goal>update</goal>-->
-                <!--<goal>tag</goal>-->
-                <!--</goals>-->
-                <!--</execution>-->
-                <!--</executions>-->
             </plugin>
         </plugins>
     </build>

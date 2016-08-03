@@ -1,0 +1,15 @@
+driver: org.postgresql.Driver
+url: jdbc:postgresql://ec2-54-163-245-32.compute-1.amazonaws.com:5432/d7oar4ddplmm6a?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
+username: dhoqqhkwmukemi
+password: GzbNqjdyKZBrc3EAvmJkMi_zab
+changelogSchemaName: test_db_data
+defaultSchemaName: test_db_data
+changeLogFile: src/main/database/db-changelog-master.xml
+verbose: true
+logging: debug
+
+referenceDefaultSchemaName: test_db_data
+referenceDriver: org.postgresql.Driver
+referenceUrl: jdbc:postgresql://ec2-54-163-245-32.compute-1.amazonaws.com:5432/d7oar4ddplmm6a?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
+referenceUsername: dhoqqhkwmukemi
+referencePassword: GzbNqjdyKZBrc3EAvmJkMi_zab
