@@ -17,5 +17,5 @@ spring:
       database: test_db
     social:
       facebook:
-        appId:
-        appSecret:
+        appId: 1754468614840836
+        appSecret: 0f982323513acb858d30dd0846fcfc63

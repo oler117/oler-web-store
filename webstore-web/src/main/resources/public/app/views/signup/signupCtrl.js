@@ -24,4 +24,13 @@ app.controller('signupCtrl', ['$scope', '$http', '$log', 'countries', function (
         })
     };
 
+    $scope.signInWithFacebook = function () {
+
+        $http.post('/connect/facebook', {scope: 'public_profile,user_location'}).then(function (response) {
+            $log.debug(response);
+        }, function (error) {
+            $log.debug(error);
+        });
+    }
+
 }])
